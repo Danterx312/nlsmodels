@@ -85,4 +85,4 @@ print(model.summary())
 
 # Notes:
 # Pseudo-R² and F-statistic are reported as descriptive measures.
-Inference is based on local linearization of the nonlinear model.
+# Inference is based on local linearization of the nonlinear model.
