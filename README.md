@@ -86,3 +86,48 @@ print(model.summary())
 # Notes:
 # Pseudo-R² and F-statistic are reported as descriptive measures.
 # Inference is based on local linearization of the nonlinear model.
+
+
+Example 2
+# Linear Regression Analysis: Puromycin Experiments
+
+This project performs a linear regression analysis using the puromycin experiment data presented in the book **"Introduction to Linear Regression Analysis"** by Montgomery, Peck, and Vining.
+
+## Reference
+
+Montgomery, D. C., Peck, E. A., & Vining, G. G. (2021). *Introduction to Linear Regression Analysis*. Wiley.
+
+
+## Experiment Data
+
+The data corresponds to **Table 12.1** from the book, which shows the relationship between substrate concentration and enzymatic reaction velocity in the presence of puromycin.
+
+### Table 12.1: Reaction Velocity vs. Substrate Concentration
+
+| Substrate Concentration (ppm) | Velocity [(counts/min)/min] |
+|---|---|
+| 0.02 | 47, 76 |
+| 0.06 | 97, 107 |
+| 0.11 | 123, 139 |
+| 0.22 | 152, 159 |
+| 0.56 | 191, 201 |
+| 1.10 | 200, 207 |
+
+**Note:** Each concentration has two replicated velocity measurements.
+
+## Analysis Objectives
+
+1. Fit a simple linear regression model: `Velocity ~ Concentration`
+2. Evaluate model fit using R² and residual analysis
+3. Verify linear model assumptions
+4. Make predictions for new concentrations
+
+## 🛠 Technologies Used
+
+- **Python 3.9+** or **R 4.0+**
+- Main libraries:
+  - Python: `pandas`, `numpy`, `scikit-learn`, `statsmodels`, `matplotlib`, `seaborn`
+  - R: `tidyverse`, `ggplot2`, `lm`, `car`
+
+## Project Structure
+
