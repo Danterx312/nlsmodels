@@ -124,10 +124,7 @@ The data corresponds to **Table 12.1** from the book, which shows the relationsh
 
 ## 🛠 Technologies Used
 
-- **Python 3.9+** or **R 4.0+**
+- **Python 3.9+**
 - Main libraries:
-  - Python: `pandas`, `numpy`, `scikit-learn`, `statsmodels`, `matplotlib`, `seaborn`
-  - R: `tidyverse`, `ggplot2`, `lm`, `car`
-
-## Project Structure
+  - Python: `pandas`, `numpy`, `statsmodels`, `matplotlib`,
 
