@@ -47,37 +47,42 @@ nlsmodels: Python package for nonlinear least squares regression with R-like for
 ## 🚀 Quick Start
 
 ```python
+import nlsmodels as nlm
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import nlsmodels as nlm
 
-# Create sample data
-np.random.seed(42)
-x = np.linspace(0, 10, 100)
-y = 2.5 * np.exp(0.3 * x) + np.random.normal(0, 0.2, 100)
+# Logistic growth data
+x = np.linspace(0, 20, 100)
+y = 10 / (1 + np.exp((5 - x) / 2)) + np.random.normal(0, 0.5, 100)
 df = pd.DataFrame({'x': x, 'y': y})
 
-# Fit nonlinear model
-model = nlm.nonreg("y ~ a * exp(b * x)", df)
+# Fit using special function (auto-initializes)
+model = nlm.nonreg("y ~ SSlogis(x, Asym, xmid, scal)", df)
 model.fit()
 
 # View results
 print(model.summary())
 # Output:
+
+#           NONLINEAR LEAST SQUARES REGRESSION             
 # ============================================================
-# NONLINEAR LEAST SQUARES REGRESSION
-# ============================================================
-# Dep. Variable: y           R-squared:    0.987
-# Model:        NLS         Adj. R-squared: 0.987
-# Method:       Least Squares F-statistic: 7452.34
-# Date:         2024-01-15  Prob (F-statistic): 0.000
-# Time:         14:30:22    Log-Likelihood: 45.231
-# No. observations: 100     AIC: -86.462
-# Df Residuals:     98      BIC: -81.251
-# Df Model:          2
-# ============================================================
-#          coef   std err     t      P>|t|    [0.025   0.975]
-# ------------------------------------------------------------
-# a      2.501***  0.023   108.742   0.000    2.456    2.546
-# b      0.298***  0.002   149.003   0.000    0.294    0.302
-# ============================================================
+#    Dep. Variable:             y           Pseudo-R:    0.976
+#            Model:           NLS      Adj. Pseudo-R:    0.975
+#           Method: Least Squares        F-statistic: 1313.159
+#             Date:    2026-01-14 Prob (F-statistic):    0.000
+#             Time:      23:24:34     Log-Likelihood:  -71.856
+# No. observations:           100                AIC: -134.122
+#     Df Residuals:            97                BIC: -126.307
+#        Df Model:             3
+# ==========================================================
+#       coef   std err     t      P>|t|    [0.025   0.975] 
+# ----------------------------------------------------------
+# Asym    9.990    0.081  123.682    0.000    9.830   10.151
+# xmid    4.932    0.091   54.163    0.000    4.751    5.113
+# scal    1.964    0.083   23.636    0.000    1.799    2.129
+# ----------------------------------------------------------
+
+# Notes:
+# Pseudo-R² and F-statistic are reported as descriptive measures.
+Inference is based on local linearization of the nonlinear model.
